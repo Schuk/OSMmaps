@@ -51,8 +51,7 @@ foreach my $location (@geofabrik) {
 	my $country = pop(@array); 
 	my $command = "wget http://download.geofabrik.de/osm/$location.osm.bz2 -o /tmp/$country.log -O $target_path/$country.osm.bz2.tmp";
 	system $command;
-	$command = "mv $target_path/$country.osm.bz2.tmp $target_path/$country.osm.bz2";
-	system $command;
+	rename "$target_path/$country.osm.bz2.tmp", "$target_path/$country.osm.bz2";
 	$pm->finish; # Terminates the child process
 }
 
