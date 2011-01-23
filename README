@@ -22,7 +22,7 @@ The setup is expected to look like this
 
 /path/to/java
 ..
-$home
+\$home
   \osm
     \garmin
     splitter.jar
@@ -35,3 +35,8 @@ $home
       \garmin
         \countries
       	country.gmap.bz2
+$tmp
+
+tmp directory is used make sure it is getting cleaned up
+BUG: Tmp Files are not always properly removed
+

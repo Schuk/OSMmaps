@@ -13,10 +13,7 @@ die("This is not home") unless -d $home;
 my $java = '/opt/jre1.6.0_13/bin/java';
 my $splitter = $home . '/osm/garmin/splitter.jar';
 my $tile_size = '1';
-#my $mkgmap = $home . '/osm/garmin/mkgmap-r973/mkgmap.jar'; 
-#my $mkgmap = $home . '/osm/garmin/mkgmap-r1188/mkgmap.jar'; 
 my $mkgmap = $home . '/osm/garmin/mkgmap-r1642/mkgmap.jar'; 
-my $map_features = $home . '/osm/garmin/map-features.csv';
 my $garmin_dir = $home . '/pub-html/osm/garmin/countries/';
 my $osm_dir = $home . '/pub-html/osm/countries/';
 my $memory = 2048;
@@ -50,7 +47,7 @@ foreach my $country (sort (keys %countries)) {
 		#/opt/jre1.6.0_02/bin/java -Xmx1024M -enableassertions -jar ../mkgmap-r971/mkgmap.jar --net --route --gmapsupp ../new/*.osm.gz
 		#$command = "$java -Xmx$memory" . "M -jar $mkgmap --mapname=00000001 --description=osm-default-map --gmapsupp $files";
 		chdir $work_dir;
-		$command = "$java -enableassertions -Xmx$memory" . "M -jar $mkgmap --net --route --mapname=$mapname --description=\"OSM " . ucfirst($country) . "\" --gmapsupp $temp_dir/*.osm.gz";
+		$command = "$java -enableassertions -Xmx$memory" . "M -jar $mkgmap --country-name \"$country\" --net --route --mapname=$mapname --description=\"OSM " . ucfirst($country) . "\" --gmapsupp $temp_dir/*.osm.gz";
 		#$command = "$java -enableassertions -Xmx$memory" . "M -jar $mkgmap --net --route --gmapsupp $temp_dir/*.osm.gz";
 		print $command . "\n";
 		system $command;
