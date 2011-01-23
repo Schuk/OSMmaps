@@ -7,6 +7,9 @@ Takes path for place to store files
 createGarmin.pl - Creates the OSM maps
 Takes path to the home
 
+map-features.csv - Scheme for visual features on garmin devices
+Found original version on http://wiki.openstreetmap.org
+
 You need the following files
 
 splitter.jar - http://www.mkgmap.org.uk/splitter/
