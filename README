@@ -7,5 +7,28 @@ Takes path for place to store files
 createGarmin.pl - Creates the OSM maps
 Takes path to the home
 
+You need the following files
+
+splitter.jar - http://www.mkgmap.org.uk/splitter/
+mkgmap.jar - http://www.mkgmap.org.uk/snapshots/
+
 
 Be sure to provide the right paths within the scripts
+
+The setup is expected to look like this
+
+/path/to/java
+..
+$home
+  \osm
+    \garmin
+    splitter.jar
+    mkgmap-rVERSION.jar
+    map-features.csv
+  \pub-html
+    \osm
+      \countries
+      country.osm.bz2
+      \garmin
+        \countries
+      	country.gmap.bz2

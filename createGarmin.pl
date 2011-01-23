@@ -11,7 +11,6 @@ my $home = $ARGV[0];
 die("This is not home") unless -d $home;
 
 my $java = '/opt/jre1.6.0_13/bin/java';
-my $osmcut = $home . '/osm/garmin/osmcut.0.5.jar';
 my $splitter = $home . '/osm/garmin/splitter.jar';
 my $tile_size = '1';
 #my $mkgmap = $home . '/osm/garmin/mkgmap-r973/mkgmap.jar'; 
@@ -40,7 +39,6 @@ foreach my $country (sort (keys %countries)) {
 	my $mapname = sprintf("%08d",int(rand(99999000)));
 	if (-r $tmp_file) {
 		#/opt/jre1.6.0_02/bin/java -Xmx1024M -jar ../splitter.jar $home/pub-html/osm/countries/germany.osm
-		#my $command = "$java -Xmx$memory" . "M -jar $osmcut $tile_size $tmp_file $temp_dir";
 		chdir $temp_dir;
 		my $command = "$java -Xmx$memory" . "M -jar $splitter --max-nodes=1000000 $tmp_file";
 		#my $command = "$java -Xmx$memory" . "M -jar $splitter --max-nodes=1500000 $tmp_file";
