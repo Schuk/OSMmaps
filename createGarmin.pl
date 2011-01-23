@@ -6,16 +6,20 @@ use warnings;
 use Data::Dumper;
 use File::Path 'rmtree';
 
+my $home = $ARGV[0];
+
+die("This is not home") unless -d $home;
+
 my $java = '/opt/jre1.6.0_13/bin/java';
-my $osmcut = '/home/thsz/osm/garmin/osmcut.0.5.jar';
-my $splitter = '/home/thsz/osm/garmin/splitter.jar';
+my $osmcut = $home . '/osm/garmin/osmcut.0.5.jar';
+my $splitter = $home . '/osm/garmin/splitter.jar';
 my $tile_size = '1';
-#my $mkgmap = '/home/thsz/osm/garmin/mkgmap-r973/mkgmap.jar'; 
-#my $mkgmap = '/home/thsz/osm/garmin/mkgmap-r1188/mkgmap.jar'; 
-my $mkgmap = '/home/thsz/osm/garmin/mkgmap-r1642/mkgmap.jar'; 
-my $map_features = '/home/thsz/osm/garmin/teddys_map-features.csv';
-my $garmin_dir = '/home/thsz/pub-html/osm/garmin/countries/';
-my $osm_dir = '/home/thsz/pub-html/osm/countries/';
+#my $mkgmap = $home . '/osm/garmin/mkgmap-r973/mkgmap.jar'; 
+#my $mkgmap = $home . '/osm/garmin/mkgmap-r1188/mkgmap.jar'; 
+my $mkgmap = $home . '/osm/garmin/mkgmap-r1642/mkgmap.jar'; 
+my $map_features = $home . '/osm/garmin/teddys_map-features.csv';
+my $garmin_dir = $home . '/pub-html/osm/garmin/countries/';
+my $osm_dir = $home . '/pub-html/osm/countries/';
 my $memory = 2048;
 
 my %countries = getCountries($osm_dir);
@@ -35,7 +39,7 @@ foreach my $country (sort (keys %countries)) {
 	$tmp_file =~ s/\.bz2$//;
 	my $mapname = sprintf("%08d",int(rand(99999000)));
 	if (-r $tmp_file) {
-		#/opt/jre1.6.0_02/bin/java -Xmx1024M -jar ../splitter.jar /home/thsz/pub-html/osm/countries/germany.osm
+		#/opt/jre1.6.0_02/bin/java -Xmx1024M -jar ../splitter.jar $home/pub-html/osm/countries/germany.osm
 		#my $command = "$java -Xmx$memory" . "M -jar $osmcut $tile_size $tmp_file $temp_dir";
 		chdir $temp_dir;
 		my $command = "$java -Xmx$memory" . "M -jar $splitter --max-nodes=1000000 $tmp_file";
