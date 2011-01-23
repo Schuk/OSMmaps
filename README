@@ -1,0 +1,9 @@
+Couple of helper scripts for creating OSM maps
+
+
+doCountries.pl - This downloads a bunch of Maps from Geofabrik
+
+createGarmin.pl - Creates the OSM maps
+
+
+Be sure to provide the right paths within the scripts
